@@ -75,8 +75,29 @@ public class orderUtil {
         return httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/trade");
     }
 
+    /**
+     * 获取币对信息
+     * @return
+     */
+    public static String getAllSymbols(){
+        return  httpUtil.doGet("","/api/publics/v1/symbols");
+    }
+
+    /**
+     * 获取行情
+     * @param symbol 币对
+     * @return
+     */
+    public static String getTicker(String symbol){
+        return  httpUtil.doGet("symbol="+symbol,"/api/publics/v1/ticker");
+    }
+
     public static void main(String[] args) {
-        String result =httpUtil.doGet("","/api/publics/v1/getClientIpAndServerTime");
+        //String result =httpUtil.doGet("","/api/publics/v1/getClientIpAndServerTime");
+        //String result = orderUtil.queryBatchOrderInfos("CB_USDT","10","1");
+
+        //String result = orderUtil.getAllSymbols();
+        String result = orderUtil.getTicker("CB_USDT");
         System.out.println("==="+result);
     }
 }
