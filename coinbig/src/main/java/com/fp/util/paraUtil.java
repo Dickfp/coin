@@ -1,17 +1,25 @@
 package com.fp.util;
 
+import org.apache.commons.lang3.time.DateUtils;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class commonUtil {
+public class paraUtil {
 
     private static final char HEX_DIGITS[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
-    public static String buildSignPara(Map<String, String> params, String secret) {
+    public static List<NameValuePair> buildSignPara(HashMap<String, String> params) {
+        List<NameValuePair> paraList = new ArrayList<NameValuePair>();
+        //TODO  apikey time
+        String apikey = "6AC452FD9595D423CC549EDDB57C902B";
+        String secret ="7902761B01337D75AD5648BEF690E3B7";
+        String time = String.valueOf(new Date().getTime());
+        params.put("apikey",apikey);
+        params.put("time",time);
         // 2.将待签名字符串要求按照参数名进行排序(首先比较所有参数名的第一个字母，按abcd顺序排列，若遇到相同首字母，则看第二个字母，以此类推)
         String result = createLinkString(params);
 
@@ -20,7 +28,11 @@ public class commonUtil {
 
         // 利用32位MD5算法，对最终待签名字符串进行签名运算，从而得到签名结果字符串（MD5计算结果中字母全部大写）
         String sign = getMD5String(stringBuffer.toString());
-        return sign;
+        for (Map.Entry<String,String> entry:params.entrySet()){
+           paraList.add(new BasicNameValuePair(entry.getKey(),entry.getValue()));
+        }
+        paraList.add(new BasicNameValuePair("sign",sign));
+        return paraList;
     }
 
 

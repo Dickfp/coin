@@ -10,16 +10,18 @@ public class propertyUtil {
 
     public static void loadProperties(){
         ResourceBundle resource =  ResourceBundle.getBundle("config");
-        resource.getKeys();
+        Enumeration enumeration = resource.getKeys();
+        while (enumeration.hasMoreElements()){
+            String key = String.valueOf(enumeration.nextElement());
+            cacheUtil.putCache(key,resource.getString(key));
+        }
     }
     public static void main(String[] args) {
         ResourceBundle resource =  ResourceBundle.getBundle("config");
-        //String val = resource.getString("apiKey");
         Enumeration enumeration = resource.getKeys();
-        if (enumeration.hasMoreElements()){
-            System.out.println("==="+enumeration.nextElement());
+        while (enumeration.hasMoreElements()){
+            String key = String.valueOf(enumeration.nextElement());
+            System.out.println(key+":"+resource.getString(key));
         }
-
-       // System.out.println("---val:"+ val);
     }
 }
