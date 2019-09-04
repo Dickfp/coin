@@ -84,7 +84,7 @@ public class orderUtil {
     }
 
     /**
-     * 获取行情
+     * 获取币对行情
      * @param symbol 币对
      * @return
      */
@@ -92,12 +92,57 @@ public class orderUtil {
         return  httpUtil.doGet("symbol="+symbol,"/api/publics/v1/ticker");
     }
 
+    /**
+     * 获取IP及服务器时间
+     * @return
+     */
+    public static String getClientIpAndServerTime(){
+        return httpUtil.doGet("","/api/publics/v1/getClientIpAndServerTime");
+    }
+
+    /**
+     * 获取用户资产(币种)
+     * @param symbol 币种名称 for example : BTC
+     * @return
+     */
+    public static String getUserAssetsBySymbol(String symbol){
+        HashMap map = new HashMap();
+        map.put("shortName",symbol);
+        return httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/userinfoBySymbol");
+    }
+
+    /**
+     *  获取各个币对的精度及其他信息
+     * @return
+     */
+    public static String getSymbolPrecision(){
+        return httpUtil.doGet("","/api/publics/v1/listSymbolPrecision");
+    }
+
+    /**
+     * 获取挖矿难度
+     * @return
+     */
+    public static String  getTheDifficultyWithMining(){
+        return httpUtil.doPost(paraUtil.buildSignPara(),"/api/publics/v1/getTheDifficultyWithMining");
+    }
+
+    /**
+     * 获取挖矿数量和开始结束时间
+     * @return
+     */
+    public static String getUserAmountMining(){
+        return httpUtil.doPost(paraUtil.buildSignPara(),"/api/publics/v1/getUserAmountMining");
+    }
+
     public static void main(String[] args) {
         //String result =httpUtil.doGet("","/api/publics/v1/getClientIpAndServerTime");
         //String result = orderUtil.queryBatchOrderInfos("CB_USDT","10","1");
-
         //String result = orderUtil.getAllSymbols();
-        String result = orderUtil.getTicker("CB_USDT");
-        System.out.println("==="+result);
+        String result = orderUtil.getTheDifficultyWithMining();
+
+        String result1 = orderUtil.getUserAmountMining();
+
+        System.out.println("==="+result +"***"+result1);
     }
 }

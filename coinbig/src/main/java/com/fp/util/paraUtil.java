@@ -1,6 +1,6 @@
 package com.fp.util;
 
-import org.apache.commons.lang3.time.DateUtils;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -11,6 +11,10 @@ import java.util.*;
 public class paraUtil {
 
     private static final char HEX_DIGITS[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
+    public static  List<NameValuePair> buildSignPara(){
+        return buildSignPara( new HashMap<String, String>());
+    }
 
     public static List<NameValuePair> buildSignPara(HashMap<String, String> params) {
         List<NameValuePair> paraList = new ArrayList<NameValuePair>();
