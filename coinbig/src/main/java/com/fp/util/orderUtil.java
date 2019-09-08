@@ -139,10 +139,11 @@ public class orderUtil {
         //String result =httpUtil.doGet("","/api/publics/v1/getClientIpAndServerTime");
         //String result = orderUtil.queryBatchOrderInfos("CB_USDT","10","1");
         //String result = orderUtil.getAllSymbols();
-        String result = orderUtil.getTheDifficultyWithMining();
+        /*String result = orderUtil.getTheDifficultyWithMining();
 
-        String result1 = orderUtil.getUserAmountMining();
+        String result1 = orderUtil.getUserAmountMining();*/
+        String result1 = orderUtil.orderTrade("buy","0.0021","2000","CB_USDT");
 
-        System.out.println("==="+result +"***"+result1);
+        System.out.println("==="+"***"+result1);
     }
 }

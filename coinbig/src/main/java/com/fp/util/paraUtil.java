@@ -19,8 +19,10 @@ public class paraUtil {
     public static List<NameValuePair> buildSignPara(HashMap<String, String> params) {
         List<NameValuePair> paraList = new ArrayList<NameValuePair>();
         //TODO  apikey time
-        String apikey = "6AC452FD9595D423CC549EDDB57C902B";
-        String secret ="7902761B01337D75AD5648BEF690E3B7";
+//        String apikey = "";
+//        String secret ="";
+        String apikey = "";
+        String secret ="";
         String time = String.valueOf(new Date().getTime());
         params.put("apikey",apikey);
         params.put("time",time);
