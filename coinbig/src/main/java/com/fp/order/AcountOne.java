@@ -7,14 +7,14 @@ public class AcountOne extends BaseAcount{
     public final static String apiKey = "";
     public final static String secret = "";
     AcountOne(){
-        super("buy");
+        super("AcountOne","buy");
     }
-    public static String trade = "buy";
-    public String getTrade() {
+    //public static String trade = "buy";
+    /*public String getTrade() {
         return trade;
     }
 
     public void setTrade(String trade) {
         this.trade = trade;
-    }
+    }*/
 }

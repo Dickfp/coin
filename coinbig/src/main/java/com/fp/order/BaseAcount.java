@@ -5,11 +5,13 @@ package com.fp.order;
  */
 public class BaseAcount {
     public String trade = "";
+    public String name = "";
     BaseAcount(){
 
     }
-    BaseAcount(String trade){
+    BaseAcount(String name,String trade){
         this.trade = trade;
+        this.name = name;
     }
     public String getTrade() {
         return trade;

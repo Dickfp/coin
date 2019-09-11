@@ -10,20 +10,20 @@ public class TradeTest {
     //获取成交价
     //起两个线程
     public static void main(String[] args) throws Exception{
-        BaseAcount one = new AcountOne();
+       /* BaseAcount one = new AcountOne();
         BaseAcount two = new AcountTwo();
         System.out.println(one.getTrade());
         System.out.println(AcountOne.trade);
         System.out.println(two.getTrade());
         one.setTrade("fp");
         System.out.println(one.getTrade());
-        System.out.println(AcountOne.trade);
-       /* while (true){
-            new BuyThread().start();
-            new SellThread().start();
+        System.out.println(AcountOne.trade);*/
+        while (true){
+            new TradeThread(new AcountOne()).start();
+            new TradeThread(new AcountTwo()).start();
             System.out.println(Thread.currentThread().getName()+System.currentTimeMillis());
             Thread.sleep(4000);
 
-        }*/
+        }
     }
 }

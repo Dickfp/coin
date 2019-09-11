@@ -6,16 +6,16 @@ package com.fp.order;
 public class AcountTwo extends BaseAcount{
     public final static String apiKey = "";
     public final static String secret = "";
-    public String trade = "sell";
+    //public String trade = "sell";
     AcountTwo(){
-        super("sell");
+        super("AcountTwo","sell");
     }
-    public String getTrade() {
+    /*public String getTrade() {
         return trade;
     }
 
     public void setTrade(String trade) {
         this.trade = trade;
-    }
+    }*/
 
 }

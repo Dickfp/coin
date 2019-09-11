@@ -10,6 +10,7 @@ public class TradeThread extends Thread{
     }
     @Override
     public void run() {
-        System.out.println("==="+acount.getTrade());
+        System.out.println("==="+acount.name+":"+acount.trade);
+
     }
 }
