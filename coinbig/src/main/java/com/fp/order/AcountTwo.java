@@ -6,9 +6,9 @@ package com.fp.order;
 public class AcountTwo extends BaseAcount{
     public final static String apiKey = "";
     public final static String secret = "";
-    //public String trade = "sell";
+    public static String trade = "sell";
     AcountTwo(){
-        super("AcountTwo","sell");
+        super("AcountTwo",trade);
     }
     /*public String getTrade() {
         return trade;

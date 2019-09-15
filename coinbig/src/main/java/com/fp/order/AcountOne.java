@@ -7,9 +7,9 @@ public class AcountOne extends BaseAcount{
     public final static String apiKey = "";
     public final static String secret = "";
     AcountOne(){
-        super("AcountOne","buy");
+        super("AcountOne",trade);
     }
-    //public static String trade = "buy";
+    public static String trade = "buy";
     /*public String getTrade() {
         return trade;
     }
