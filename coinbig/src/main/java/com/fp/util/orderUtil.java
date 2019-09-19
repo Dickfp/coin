@@ -12,11 +12,12 @@ public class orderUtil {
      * @param order_id
      * @return
      */
-    public static String queryOrderFee(String order_id){
+    public static String queryOrderFee(String order_id,String apiKey,String secret){
         String result = "";
         HashMap map = new HashMap();
         map.put("order_id",order_id);
-        result = httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/order_fee");
+        map.put("apiKey",apiKey);
+        result = httpUtil.doPost(paraUtil.buildSignPara(map,secret),"/api/publics/v1/order_fee");
         return result;
     }
 
@@ -25,10 +26,11 @@ public class orderUtil {
      * @param order_id
      * @return
      */
-    public static String queryOrderInfo(String order_id){
+    public static String queryOrderInfo(String order_id,String apiKey,String secret){
         HashMap map = new HashMap();
         map.put("order_id",order_id);
-        return httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/order_info");
+        map.put("apiKey",apiKey);
+        return httpUtil.doPost(paraUtil.buildSignPara(map,secret),"/api/publics/v1/order_info");
     }
 
     /**
@@ -39,12 +41,13 @@ public class orderUtil {
      *             查询类型 1未成交,2部分成交,3完全成交,4用户撤销,5部分撤回,6成交失败
      * @return
      */
-    public static String queryBatchOrderInfos(String symbol,String size,String type){
+    public static String queryBatchOrderInfos(String symbol,String size,String type,String apiKey,String secret){
         HashMap map = new HashMap();
         map.put("symbol",symbol);
         map.put("size",size);
         map.put("type",type);
-        return httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/orders_info");
+        map.put("apiKey",apiKey);
+        return httpUtil.doPost(paraUtil.buildSignPara(map,secret),"/api/publics/v1/orders_info");
     }
 
     /**
@@ -52,10 +55,11 @@ public class orderUtil {
      * @param order_id
      * @return
      */
-    public static String cancelOrder(String order_id){
+    public static String cancelOrder(String order_id,String apiKey,String secret){
         HashMap map = new HashMap();
         map.put("order_id",order_id);
-        return httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/cancel_order");
+        map.put("apiKey",apiKey);
+        return httpUtil.doPost(paraUtil.buildSignPara(map,secret),"/api/publics/v1/cancel_order");
     }
 
     /**
@@ -66,13 +70,14 @@ public class orderUtil {
      * @param symbol 币对
      * @return
      */
-    public static String orderTrade(String type,String price,String amount,String symbol){
+    public static String orderTrade(String type,String price,String amount,String symbol,String apiKey,String secret){
         HashMap map = new HashMap();
         map.put("type",type);
         map.put("price",price);
         map.put("amount",amount);
         map.put("symbol",symbol);
-        return httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/trade");
+        map.put("apiKey",apiKey);
+        return httpUtil.doPost(paraUtil.buildSignPara(map,secret),"/api/publics/v1/trade");
     }
 
     /**
@@ -105,10 +110,11 @@ public class orderUtil {
      * @param symbol 币种名称 for example : BTC
      * @return
      */
-    public static String getUserAssetsBySymbol(String symbol){
+    public static String getUserAssetsBySymbol(String symbol,String apiKey,String secret){
         HashMap map = new HashMap();
         map.put("shortName",symbol);
-        return httpUtil.doPost(paraUtil.buildSignPara(map),"/api/publics/v1/userinfoBySymbol");
+        map.put("apiKey",apiKey);
+        return httpUtil.doPost(paraUtil.buildSignPara(map,secret),"/api/publics/v1/userinfoBySymbol");
     }
 
     /**
@@ -142,8 +148,8 @@ public class orderUtil {
         /*String result = orderUtil.getTheDifficultyWithMining();
 
         String result1 = orderUtil.getUserAmountMining();*/
-        String result1 = orderUtil.orderTrade("buy","0.0021","2000","CB_USDT");
+        //String result1 = orderUtil.orderTrade("buy","0.0021","2000","CB_USDT");
 
-        System.out.println("==="+"***"+result1);
+        //System.out.println("==="+"***"+result1);
     }
 }

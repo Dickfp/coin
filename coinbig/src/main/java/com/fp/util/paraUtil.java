@@ -13,18 +13,19 @@ public class paraUtil {
     private static final char HEX_DIGITS[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     public static  List<NameValuePair> buildSignPara(){
-        return buildSignPara( new HashMap<String, String>());
+//        return buildSignPara( new HashMap<String, String>());
+        return new ArrayList<NameValuePair>();
     }
 
-    public static List<NameValuePair> buildSignPara(HashMap<String, String> params) {
+    public static List<NameValuePair> buildSignPara(HashMap<String, String> params,String secret) {
         List<NameValuePair> paraList = new ArrayList<NameValuePair>();
         //TODO  apikey time
 //        String apikey = "";
 //        String secret ="";
-        String apikey = "";
-        String secret ="";
+//       /* String apikey = "";
+//        String secret ="";*/
         String time = String.valueOf(new Date().getTime());
-        params.put("apikey",apikey);
+        //params.put("apikey",apikey);
         params.put("time",time);
         // 2.将待签名字符串要求按照参数名进行排序(首先比较所有参数名的第一个字母，按abcd顺序排列，若遇到相同首字母，则看第二个字母，以此类推)
         String result = createLinkString(params);
